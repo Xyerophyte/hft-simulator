@@ -1,8 +1,12 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# C extensions
 *.so
+
+# Distribution / packaging
 .Python
 build/
 develop-eggs/
@@ -20,30 +24,55 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual Environment
-venv/
-env/
-ENV/
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+.benchmarks/
+
+# Translations
+*.mo
+*.pot
 
 # Jupyter Notebook
 .ipynb_checkpoints
-*.ipynb_checkpoints
 
-# Data files
-data/raw/*.csv
-data/raw/*.parquet
-data/processed/*.csv
-data/processed/*.parquet
+# IPython
+profile_default/
+ipython_config.py
 
-# Model files
-*.pth
-*.pt
-*.pkl
-*.joblib
+# pyenv
+.python-version
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # IDE
-.vscode/
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
@@ -52,13 +81,18 @@ data/processed/*.parquet
 .DS_Store
 Thumbs.db
 
-# Logs
+# Project specific - Data & Results
+data/
+results/
+logs/
+models/*.pth
+*.pth
+
+# Temporary files
+*.tmp
+*.temp
+hft_results.txt
 *.log
 
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Environment variables
-.env
+# Plans (internal)
+plans/
