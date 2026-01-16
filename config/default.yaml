@@ -1,0 +1,88 @@
+# HFT Simulator Configuration
+# ============================
+# Default configuration file for production-ready HFT simulator
+
+# Data Source Settings
+data:
+  symbol: "BTCUSDT"
+  interval: "1m"
+  source: "binance"
+  history_days: 7
+  cache_enabled: true
+  cache_dir: "data/cache"
+
+# ML Model Settings
+ml:
+  model_type: "ensemble"  # lstm, transformer, ensemble
+  lookback: 30
+  prediction_horizon: 1
+  
+  lstm:
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.2
+  
+  transformer:
+    d_model: 64
+    nhead: 4
+    num_layers: 2
+    dropout: 0.1
+  
+  training:
+    epochs: 30
+    batch_size: 32
+    learning_rate: 0.001
+    validation_split: 0.2
+    early_stopping_patience: 10
+
+# Strategy Settings
+strategy:
+  type: "momentum"  # momentum, mean_reversion, breakout, ensemble
+  
+  momentum:
+    ml_threshold: 0.50
+    momentum_threshold: 0.0002
+    volume_threshold: 1.05
+  
+  mean_reversion:
+    rsi_oversold: 35
+    rsi_overbought: 65
+    bb_threshold: 0.0
+    mean_deviation_threshold: 0.01
+  
+  breakout:
+    lookback: 20
+    breakout_threshold: 0.0005
+    volume_threshold: 1.1
+  
+  ensemble:
+    method: "majority"  # majority, unanimous, weighted
+    min_confidence: 0.30
+    weights:
+      momentum: 0.45
+      mean_reversion: 0.35
+      breakout: 0.20
+
+# Risk Management Settings
+risk:
+  max_position_pct: 0.25
+  max_drawdown_pct: 0.12
+  stop_loss_pct: 0.015
+  take_profit_pct: 0.03
+  max_daily_loss_pct: 0.04
+  position_sizing: "kelly"  # fixed, volatility, kelly
+
+# Backtest Settings
+backtest:
+  initial_capital: 100000
+  fee_rate: 0.0008
+  slippage_pct: 0.0002
+  use_risk_manager: true
+
+# Output Settings
+output:
+  results_dir: "results"
+  save_trades: true
+  save_equity: true
+  save_visualizations: true
+  log_level: "INFO"

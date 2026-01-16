@@ -1,0 +1,41 @@
+# HFT Simulation Configuration
+# Optimized parameters for best results
+
+# Tick generation
+tick_count: 5000
+seed: 42
+initial_price: 50000
+volatility: 0.001
+
+# Market Maker Settings
+market_maker:
+  spread_bps: 3.0              # Wider spread = more profit per trade
+  base_size: 0.5               # Smaller size = less inventory risk
+  max_position: 5.0            # Lower max = less directional risk
+  inventory_skew_factor: 0.15  # More aggressive skewing
+  min_spread_bps: 1.5          # Never go below this
+  quote_refresh_us: 50         # 50 microseconds
+
+# Statistical Arbitrage
+stat_arb:
+  entry_z_threshold: 2.5       # Enter on stronger signals
+  exit_z_threshold: 0.3        # Exit earlier to lock profits
+  lookback_periods: 50         # Faster mean estimation
+  max_position: 3.0            # Smaller positions
+
+# Latency Arbitrage
+latency_arb:
+  min_advantage_ns: 5000       # 5 microsecond minimum edge
+  min_price_move_bps: 0.5      # Trade smaller moves
+  signal_decay_ns: 500000      # 500us signal validity
+
+# Risk Management
+risk:
+  max_loss_per_trade: 20.0
+  daily_loss_limit: 500.0
+  position_limit: 5.0
+
+# Order Book
+order_book:
+  initial_depth_levels: 10
+  initial_size_per_level: 5.0
